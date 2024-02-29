@@ -17,6 +17,7 @@ function AddPost() {
   const navigate = useNavigate();
   const { currentUser } = useSelector((state) => state.auth);
   const data = currentUser?.data?.data?.user;
+  const data2 = currentUser?.user;
   const [formdata, setFormdata] = useState({
     title: "",
     description: "",
@@ -68,7 +69,7 @@ function AddPost() {
     try {
       const res = await axios.post("/api/v1/listing/create", {
         ...formdata,
-        userRef: currentUser?._id || data?._id,
+        userRef: currentUser?._id || data?._id || data2?._id,
       });
       console.log(res);
       navigate("/");
@@ -103,22 +104,7 @@ function AddPost() {
               }}
               value={formdata.description}
             />
-            <Input
-              label="Slug :"
-              placeholder="Slug"
-              className="mb-4"
-              type="text"
-              id="slug"
-              value={formdata.slug}
-              onChange={(e) => {
-                setFormdata({ ...formdata, slug: e.target.value });
-              }}
-              // onInput={(e) => {
-              //   setValue("slug", slugTransform(e.currentTarget.value), {
-              //     shouldValidate: true,
-              //   });
-              // }}
-            />
+
             <RTE
               label="Content :"
               name="content"

@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { Container, Button } from "../components/index";
 import { useSelector } from "react-redux";
+import { Skeleton } from "@/components/ui/skeleton";
 
 const PostCardPg = () => {
   const params = useParams();
@@ -12,6 +13,8 @@ const PostCardPg = () => {
   const [isAuthor, setIsAuthor] = useState(false);
   const { currentUser } = useSelector((state) => state.auth);
   const data = currentUser?.data?.data?.user;
+  const data2 = currentUser?.user;
+
   const navigate = useNavigate();
   //   console.log(data);
   //   console.log(currentUser);
@@ -57,7 +60,8 @@ const PostCardPg = () => {
           />
 
           {currentUser?._id ||
-            (data?._id === post?.userRef && (
+            data?._id === post?.userRef ||
+            (data2?._id === post?.userRef && (
               <div className="absolute  right-[3%] top-6">
                 <Link to={`/edit-post/${post._id}`}>
                   <Button
@@ -89,7 +93,15 @@ const PostCardPg = () => {
     //     <Button>Add Post</Button>
     //   </Link>
     // );
-    <h1>No posts</h1>
+    <>
+      <div className="flex flex-col space-y-3">
+        <Skeleton className="h-[125px] w-[250px] rounded-xl" />
+        <div className="space-y-2">
+          <Skeleton className="h-4 w-[250px]" />
+          <Skeleton className="h-4 w-[200px]" />
+        </div>
+      </div>
+    </>
   );
 };
 

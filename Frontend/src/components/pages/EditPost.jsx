@@ -1,4 +1,7 @@
+"use client";
 import React, { useEffect, useState } from "react";
+import { ToastAction } from "@/components/ui/toast";
+import { useToast } from "@/components/ui/use-toast";
 import { Button, Container, Input, RTE, Select } from "../index";
 import {
   getStorage,
@@ -14,6 +17,7 @@ import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 
 function AddPost() {
+  const toast = useToast();
   const { control } = useForm();
   const navigate = useNavigate();
   const { currentUser } = useSelector((state) => state.auth);
@@ -27,17 +31,31 @@ function AddPost() {
     status: true,
   });
 
-  console.log(formdata);
+  // console.log(formdata);
   const [image, setImage] = useState(undefined);
   const [imageError, setImageError] = useState(false);
   const [imageSuccess, setImageSuccess] = useState(false);
+  const [updateSuccess, setUpdateSuccess] = useState(false);
+  const [errorText, setErrorText] = useState(false);
+
   const params = useParams();
+
+  useEffect(() => {
+    if (errorText) {
+      // Call toast function when errorText changes to true
+      toast({
+        variant: "destructive",
+        title: "Please check your credentials.",
+        description: "There was a problem with your request.",
+      });
+    }
+  }, [errorText]);
 
   useEffect(() => {
     const fetchListing = async () => {
       const listingId = params.slug;
       const res = await axios.get(`/api/v1/listing/get/${listingId}`);
-      console.log(res.data.data);
+      // console.log(res.data.data);
       setFormdata(res.data.data);
     };
     //   const listingId = params.listingId;
@@ -88,13 +106,16 @@ function AddPost() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      setErrorText(false);
       const res = await axios.post(`/api/v1/listing/update/${params.slug}`, {
         ...formdata,
         userRef: currentUser?._id || data?._id,
       });
       console.log(res);
       navigate("/");
+      setErrorText(false);
     } catch (error) {
+      setErrorText(true);
       console.log(error);
     }
   };
@@ -157,6 +178,15 @@ function AddPost() {
               control={control}
             />
           </div>
+          {errorText ? (
+            <div>
+              <ToastAction description="There was a problem with your request." />
+            </div>
+          ) : (
+            <div>
+              <ToastAction description="There was a problem with your request." />
+            </div>
+          )}
           <div className="w-1/3 px-2">
             {imageSuccess ? (
               <p className="text-green-700">Image uploaded successfully</p>

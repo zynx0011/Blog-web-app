@@ -1,96 +1,3 @@
-// import React, { useState } from "react";
-// import authService from "../appwrite/auth";
-// import { Link, useNavigate } from "react-router-dom";
-// import { login } from "../store/authSlice";
-// import { Button, Input, Logo } from "./index.js";
-// import { useDispatch } from "react-redux";
-// import { useForm } from "react-hook-form";
-
-// function Signup() {
-//   const navigate = useNavigate();
-//   const [error, setError] = useState("");
-//   const dispatch = useDispatch();
-//   const { register, handleSubmit } = useForm();
-
-//   const create = async (data) => {
-//     setError("");
-//     try {
-//       const userData = await authService.createAccount(data);
-//       if (userData) {
-//         const userData = await authService.cra();
-//         if (userData) dispatch(login(userData));
-//         navigate("/");
-//       }
-//     } catch (error) {
-//       setError(error.message);
-//     }
-//   };
-
-//   return (
-//     <div className="flex items-center justify-center">
-//       <div
-//         className={`mx-auto w-full max-w-lg bg-gray-100 rounded-xl p-10 border border-black/10`}
-//       >
-//         <div className="mb-2 flex justify-center">
-//           <span className="inline-block w-full max-w-[100px]">
-//             <Logo width="100%" />
-//           </span>
-//         </div>
-//         <h2 className="text-center text-2xl font-bold leading-tight">
-//           Sign up to create account
-//         </h2>
-//         <p className="mt-2 text-center text-base text-black/60">
-//           Already have an account?&nbsp;
-//           <Link
-//             to="/login"
-//             className="font-medium text-primary transition-all duration-200 hover:underline"
-//           >
-//             Sign In
-//           </Link>
-//         </p>
-//         {error && <p className="text-red-600 mt-8 text-center">{error}</p>}
-
-//         <form onSubmit={handleSubmit(create)}>
-//           <div className="space-y-5">
-//             <Input
-//               label="Full Name: "
-//               placeholder="Enter your full name"
-//               {...register("name", {
-//                 required: true,
-//               })}
-//             />
-//             <Input
-//               label="Email: "
-//               placeholder="Enter your email"
-//               type="email"
-//               {...register("email", {
-//                 required: true,
-//                 validate: {
-//                   matchPatern: (value) =>
-//                     /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(value) ||
-//                     "Email address must be a valid address",
-//                 },
-//               })}
-//             />
-//             <Input
-//               label="Password: "
-//               type="password"
-//               placeholder="Enter your password"
-//               {...register("password", {
-//                 required: true,
-//               })}
-//             />
-//             <Button type="submit" className="w-full">
-//               Create Account
-//             </Button>
-//           </div>
-//         </form>
-//       </div>
-//     </div>
-//   );
-// }s
-
-// export default Signup;
 "use client";
 import { ToastAction } from "@/components/ui/toast";
 import { useToast } from "@/components/ui/use-toast";
@@ -146,9 +53,16 @@ function Signup() {
   };
 
   return (
-    <div className="flex items-center justify-center bg-[url(bg3.jpg)] bg-cover   bg-no-repeat max-h-screen p-[15%]">
+    <div className="flex items-center justify-center   max-h-screen p-[15%]">
+      <div className="div bg-gradient-to-r from-violet-600 to-indigo-600 h-[532px] ml-[16%] flex items-center justify-center rounded-xl w-[30%]">
+        <div className="text-3xl text-center font-bold">
+          <h1>
+            Welcome To <span className="text-white">Express</span>
+          </h1>
+        </div>
+      </div>
       <div
-        className={`mx-auto w-full max-w-lg backdrop-blur-lg rounded-xl p-10 border border-black/10`}
+        className={`mx-auto w-full max-w-lg backdrop-blur-lg mr-[12%] bg-white rounded-xl p-10 border border-black/20`}
       >
         <div className="mb-5 flex justify-center">
           <span className="inline-block w-full max-w-[100px]">
@@ -162,7 +76,7 @@ function Signup() {
           Already have an account?&nbsp;
           <Link
             to="/login"
-            className="font-medium text-primary transition-all duration-200 hover:underline"
+            className="font-medium text-primary transition-all text-indigo-500 duration-200 hover:underline"
           >
             Sign In
           </Link>
@@ -210,7 +124,7 @@ function Signup() {
                 required: true,
               })}
             /> */}
-            <Button type="submit" className="w-full">
+            <Button type="submit" className="w-full bg-indigo-500">
               Create Account
             </Button>
           </div>

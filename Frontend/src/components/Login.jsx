@@ -49,8 +49,15 @@ function Login() {
   }, [errorText]);
 
   return (
-    <div className="flex items-center justify-center w-full bg-[url(bg3.jpg)] bg-cover   bg-no-repeat max-h-screen p-[15%]">
-      <div className="mx-auto w-full max-w-lg  rounded-xl p-10 border  backdrop-blur-lg border-black/10">
+    <div className="flex items-center justify-center w-full  max-h-screen p-[15%]">
+      <div className="div bg-gradient-to-r from-violet-600 to-indigo-600 h-[532px] ml-[16%] flex items-center justify-center rounded-xl w-[30%]">
+        <div className="text-3xl text-center font-bold">
+          <h1>
+            Welcome To <span className="text-white">Express</span>
+          </h1>
+        </div>
+      </div>
+      <div className="mx-auto w-full max-w-lg  h-[532px] mr-[12%] bg-white rounded-xl p-10 border  backdrop-blur-lg border-black/10">
         <div className="mb-2 flex justify-center">
           <span className="inline-block w-full max-w-[100px]">
             <Logo width="100%" />
@@ -64,7 +71,7 @@ function Login() {
           Don&apos;t have any account?&nbsp;
           <Link
             to="/signup"
-            className="font-medium text-primary transition-all duration-200 hover:underline"
+            className="font-medium text-primary transition-all text-indigo-500 duration-200 hover:underline"
           >
             Sign Up
           </Link>
@@ -92,8 +99,9 @@ function Login() {
               placeholder="Enter your password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              className="mb-7"
             />
-            <Button type="submit" className="w-full">
+            <Button type="submit" className=" w-full  bg-indigo-500">
               Sign in
             </Button>
           </div>

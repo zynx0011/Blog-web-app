@@ -24,7 +24,7 @@ function App() {
   // }, []);
 
   return (
-    <div className="min-h-screen  flex flex-wrap content-between ">
+    <div className="min-h-screen  flex flex-wrap content-between bg-[#f9eded]">
       <div className="w-full block">
         <Header />
         <main>

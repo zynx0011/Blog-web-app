@@ -25,9 +25,7 @@ function AllPosts() {
   if (posts.length == 0) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <h1 className="text-3xl font-bold hover:text-gray-800">
-          <Link to={"/add-post"}>No Posts Are Published </Link>
-        </h1>
+        <h1 className="text-4xl font-bold hover:text-gray-800">Loading...</h1>
       </div>
     );
   }
