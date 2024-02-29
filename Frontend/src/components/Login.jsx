@@ -23,23 +23,11 @@ function Login() {
     e.preventDefault();
     try {
       dispatch(signInStart());
-      const res = await fetch(
-        "/api/v1/users/SignIn",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        },
-        { email, password }
-      );
-      const data = await res.json();
-      console.log(data);
-      if (data.success === false) {
-        dispatch(signInFailure(data.message));
-        return;
-      }
-      dispatch(signInSuccess(data));
+      const res = await axios.post("/api/v1/users/SignIn", {
+        email,
+        password,
+      });
+      dispatch(signInSuccess(res.data.data));
       Navigate("/");
       setErrorText(false);
     } catch (error) {
