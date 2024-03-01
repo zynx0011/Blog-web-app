@@ -6,7 +6,7 @@ import path from "path";
 export default defineConfig({
   server: {
     proxy: {
-      "/api": "https://blog-app-backend-alpha.vercel.app",
+      "/api": `{window.location.origin}`,
     },
   },
   plugins: [react()],
