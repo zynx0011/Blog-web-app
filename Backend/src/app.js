@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
+import path from "path";
 
 const app = express();
 
@@ -11,11 +12,15 @@ app.use(
     credentials: true,
   })
 );
-
+const __dirname = path.resolve();
 app.use(express.json({ limit: "16kb" }));
 app.use(express.urlencoded({ extended: true, limit: "16kb" }));
-app.use(express.static("public"));
+app.use(express.static(path.join(__dirname, "/frontend/dist")));
 app.use(cookieParser());
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "frontend", "dist", "index  .html"));
+});
 
 //routes import
 import userRouter from "./routes/user.routes.js";

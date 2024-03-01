@@ -7,12 +7,7 @@
   "scripts": {
     "dev": "nodemon -r dotenv/config --experimental-json-modules src/index.js"
   },
-  "keywords": [
-    "javascript",
-    "backend",
-    "chai"
-  ],
-  "author": "Hitesh Choudhary",
+  
   "license": "ISC",
   "devDependencies": {
     "nodemon": "^3.0.1",
