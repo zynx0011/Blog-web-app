@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button, Container, Input, RTE, Select } from "../index";
+import { Button, Container, Input, Select } from "../index";
 import {
   getStorage,
   ref,
@@ -13,7 +13,6 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 function AddPost() {
-  const { control } = useForm();
   const navigate = useNavigate();
   const { currentUser } = useSelector((state) => state.auth);
   const data = currentUser?.data?.data?.user;
@@ -80,8 +79,11 @@ function AddPost() {
   return (
     <div className="py-8">
       <Container>
-        <form onSubmit={handleSubmit} className="flex flex-wrap">
-          <div className="w-2/3 px-2">
+        <form
+          onSubmit={handleSubmit}
+          className="flex items-center flex-wrap flex-col "
+        >
+          <div className="sm:w-2/3 sm:px-2">
             <Input
               label="Title :"
               placeholder="Title"
@@ -104,23 +106,16 @@ function AddPost() {
               }}
               value={formdata.description}
             />
-
-            <RTE
-              label="Content :"
-              name="content"
-              type="text"
-              onChange={(e) => {
-                setFormdata({ ...formdata, content: e.target.value });
-              }}
-              id="content"
-              control={control}
-            />
           </div>
-          <div className="w-1/3 px-2">
+          <div className="px-4 sm:w-2/3 sm:px-2">
             {imageSuccess ? (
-              <p className="text-green-700">Image uploaded successfully</p>
+              <p className="text-green-700 text-center">
+                Image uploaded successfully
+              </p>
             ) : (
-              <p className="text-blue-700">Image is uploading please wait </p>
+              <p className="text-blue-700 text-center">
+                Image is uploading please wait{" "}
+              </p>
             )}
             <Input
               label="Featured Image :"

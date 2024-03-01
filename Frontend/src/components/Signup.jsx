@@ -54,15 +54,15 @@ function Signup() {
 
   return (
     <div className="flex items-center justify-center   max-h-screen p-[15%]">
-      <div className="div bg-gradient-to-r from-violet-600 to-indigo-600 h-[532px] ml-[16%] flex items-center justify-center rounded-xl w-[30%]">
-        <div className="text-3xl text-center font-bold">
+      <div className="div w-10 bg-gradient-to-r from-violet-600 to-indigo-600 h-[592px] sm:ml-[16%] flex items-center justify-center rounded-xl sm:w-[30%]">
+        <div className="text-3xl hidden sm:block text-center font-bold">
           <h1>
             Welcome To <span className="text-white">Express</span>
           </h1>
         </div>
       </div>
       <div
-        className={`mx-auto w-full max-w-lg backdrop-blur-lg mr-[12%] bg-white rounded-xl p-10 border border-black/20`}
+        className={`mx-auto h-[592px]  sm:w-full max-w-lg backdrop-blur-lg sm:mr-[12%] bg-white rounded-xl p-10 border border-black/20`}
       >
         <div className="mb-5 flex justify-center">
           <span className="inline-block w-full max-w-[100px]">

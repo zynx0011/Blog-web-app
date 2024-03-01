@@ -35,6 +35,7 @@ const Home = () => {
         <Slide
           duration={3500}
           autoplay={true}
+          infinite={true}
           onChange={function noRefCheck() {}}
           onStartChange={function noRefCheck() {}}
         >
@@ -50,17 +51,17 @@ const Home = () => {
                     }}
                   >
                     <div className="absolute top-[29%] left-[13%] max-w-2xl flex flex-col gap-8">
-                      <h1 className="text-5xl font-bold text-[#464895] uppercase w-[60%] text-center p-2 bg-[#f9eded] ">
+                      <h1 className="sm:text-5xl text-xl w-[60%] font-bold text-[#464895] uppercase sm:w-[60%] text-center p-2 bg-[#f9eded] ">
                         {post?.title}
                       </h1>
-                      <p className="text-2xl font-bold text-[#f9eded]">
+                      <p className="sm:text-2xl w-[80%] sm:w-full font-bold text-[#f9eded]">
                         Multiple lines of text that form the lede, informing new
                         readers quickly and efficiently about what's most
                         interesting in this post's contents.
                       </p>
                       <Link
                         to={`/post/${post._id}`}
-                        className="bg-[#3f418d] hover:bg-[#464895] w-[24%] text-center text-[#f9eded] font-bold py-2 mt-3 px-4 rounded"
+                        className="bg-[#3f418d] w-[44%] hover:bg-[#464895] sm:w-[24%] text-center text-[#f9eded] font-bold py-2 sm:mt-3 px-4 rounded"
                       >
                         Read More
                       </Link>
@@ -149,9 +150,14 @@ const Home = () => {
               bibendum, leo sed suscipit aliquam, enim neque congue nibh, id
               posuere magna ipsum eget orci.
             </p>
-            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 mt-10 px-4 rounded">
-              Read My Blogs
-            </button>
+            <Link to={"/all-posts"}>
+              <button
+                className="bg-blue-500 hover:bg-blue-700 text-white font-bold
+                py-2 mt-10 px-4 rounded"
+              >
+                Read My Blogs
+              </button>
+            </Link>
           </div>
         </div>
       </div>

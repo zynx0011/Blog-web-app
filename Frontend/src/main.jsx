@@ -12,7 +12,6 @@ import { LogoutBtn, Signup } from "./components/index.js";
 import AllPosts from "./components/pages/AllPosts.jsx";
 import AddPost from "./components/pages/Addpost.jsx";
 import EditPost from "./components/pages/EditPost.jsx";
-import Post from "./components/pages/Post.jsx";
 import {
   Route,
   RouterProvider,
@@ -21,7 +20,6 @@ import {
 } from "react-router-dom";
 import PrivateRoute from "./components/PrivateRoutes.jsx";
 import PostCardPg from "./components/PostCardPg.jsx";
-import Admin from "./components/pages/Admin.jsx";
 
 // const router = createBrowserRouter([
 //   {
@@ -97,7 +95,6 @@ const router = createBrowserRouter(
         <Route path="/logout" element={<LogoutBtn />} />
         <Route path="/edit-post/:slug" element={<EditPost />} />
         <Route path="/post/:id" element={<PostCardPg />} />
-        <Route path="/admin" element={<Admin />} />
       </Route>
     </Route>
   )

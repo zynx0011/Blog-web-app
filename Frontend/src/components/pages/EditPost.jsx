@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { ToastAction } from "@/components/ui/toast";
 import { useToast } from "@/components/ui/use-toast";
-import { Button, Container, Input, RTE, Select } from "../index";
+import { Button, Container, Input, Select } from "../index";
 import {
   getStorage,
   ref,
@@ -166,16 +166,6 @@ function AddPost() {
               //     shouldValidate: true,
               //   });
               // }}
-            />
-            <RTE
-              label="Content :"
-              name="content"
-              type="text"
-              onChange={(e) => {
-                setFormdata({ ...formdata, content: e.target.value });
-              }}
-              id="content"
-              control={control}
             />
           </div>
           {errorText ? (
