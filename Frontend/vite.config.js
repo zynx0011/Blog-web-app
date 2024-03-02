@@ -4,11 +4,11 @@ import path from "path";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  server: {
-    proxy: {
-      "/api": "https://blog-app-backend-c9w1.onrender.com/api",
-    },
-  },
+  // server: {
+  //   proxy: {
+  //     "/api": "https://blog-app-backend-c9w1.onrender.com/api/v",
+  //   },
+  // },
   plugins: [react()],
   resolve: {
     alias: {
