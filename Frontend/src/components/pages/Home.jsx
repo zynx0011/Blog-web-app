@@ -14,9 +14,7 @@ const Home = () => {
     const data = async () => {
       setLoading(true);
       try {
-        const res = await axios.get(
-          "https://blog-app-backend-c9w1.onrender.com/api/v1/listing/get"
-        );
+        const res = await axios.get("/api/v1/listing/get");
         console.log(res);
         setPosts(res.data.data);
         setLoading(false);
