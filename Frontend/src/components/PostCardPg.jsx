@@ -20,6 +20,7 @@ const PostCardPg = () => {
   //   console.log(currentUser);
   //   console.log(isAuthor);
   //   console.log(post?.userRef);
+  console.log(post?.content);
 
   useEffect(() => {
     // if (currentUser?._id || data?._id === post?.userRef) {
@@ -81,10 +82,21 @@ const PostCardPg = () => {
               </div>
             ))}
         </div>
-        <div className="w-full mb-6">
-          <h1 className="text-2xl font-bold">{post.title}</h1>
+        <div className="flex flex-col gap-8">
+          <div className="w-full mb-6">
+            <h1 className="text-4xl mt-5 font-bold text-center">
+              {post.title}
+            </h1>
+          </div>
+          <div className="browser-css text-xl ">
+            <span className="font-bold text-xl">Description : </span>
+            {post.description}
+          </div>
+          <div className="browser-css  ">
+            <span className="font-bold text-xl">Content : </span>
+            {post.content}
+          </div>
         </div>
-        <div className="browser-css">{post.content}</div>
       </Container>
     </div>
   ) : (

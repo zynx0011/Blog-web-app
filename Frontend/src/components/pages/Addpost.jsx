@@ -77,13 +77,103 @@ function AddPost() {
     }
   };
   return (
+    // <div className="py-8">
+    //   <Container>
+    //     <form
+    //       onSubmit={handleSubmit}
+    //       className="flex items-center flex-wrap flex-col "
+    //     >
+    //       <div className="sm:w-2/3 sm:px-2">
+    //         <Input
+    //           label="Title :"
+    //           placeholder="Title"
+    //           className="mb-4"
+    //           type="text"
+    //           id="title"
+    //           onChange={(e) => {
+    //             setFormdata({ ...formdata, title: e.target.value });
+    //           }}
+    //           value={formdata.title}
+    //         />
+    //         <Input
+    //           label="Description :"
+    //           placeholder="Description"
+    //           className="mb-4"
+    //           type="text"
+    //           id="description"
+    //           onChange={(e) => {
+    //             setFormdata({ ...formdata, description: e.target.value });
+    //           }}
+    //           value={formdata.description}
+    //         />
+    //         <label>Content :</label>
+    //         <textarea
+    //           label="Content :"
+    //           name="content"
+    //           placeholder="Content"
+    //           className="mb-4 w-full p-3"
+    //           rows={10}
+    //           value={formdata.content}
+    //           onChange={(e) => {
+    //             setFormdata({ ...formdata, content: e.target.value });
+    //           }}
+    //         ></textarea>
+    //       </div>
+    //       <div className="px-4 sm:w-2/3 sm:px-2">
+    //         {imageSuccess ? (
+    //           <p className="text-green-700 text-center">
+    //             Image uploaded successfully
+    //           </p>
+    //         ) : (
+    //           <p className="text-blue-700 text-center">
+    //             Image is uploading please wait{" "}
+    //           </p>
+    //         )}
+    //         <Input
+    //           label="Featured Image :"
+    //           type="file"
+    //           id="featuredImage"
+    //           className="mb-4"
+    //           accept="image/png, image/jpg, image/jpeg, image/gif"
+    //           onChange={(e) => setImage(e.target.files[0])}
+    //         />
+    //         {/* {post && (
+    //           <div className="w-full mb-4">
+    //             <img
+    //               src={appwriteService.getFilePreview(post.featuredImage)}
+    //               alt={post.title}
+    //               className="rounded-lg"
+    //             />
+    //           </div>
+    //         )} */}
+    //         <Select
+    //           options={["active", "inactive"]}
+    //           label="Status"
+    //           className="mb-4"
+    //           id="status"
+    //           onChange={(e) => {
+    //             setFormdata({ ...formdata, status: e.target.value });
+    //           }}
+    //           type="boolean"
+    //         />
+    //         <Button
+    //           type="submit"
+    //           // bgColor={post ? "bg-green-500" : undefined}
+    //           className="w-full"
+    //         >
+    //           {/* {post ? "Update" : "Submit"} */}
+    //           Submit
+    //         </Button>
+    //       </div>
+    //     </form>
+    //   </Container>
+    // </div>
+
     <div className="py-8">
       <Container>
-        <form
-          onSubmit={handleSubmit}
-          className="flex items-center flex-wrap flex-col "
-        >
-          <div className="sm:w-2/3 sm:px-2">
+        <h1 className="text-4xl font-bold text-center mb-16">Post Your Blog</h1>
+        <form onSubmit={handleSubmit} className="flex flex-wrap">
+          <div className="w-2/3 px-2">
             <Input
               label="Title :"
               placeholder="Title"
@@ -106,16 +196,25 @@ function AddPost() {
               }}
               value={formdata.description}
             />
+            <label>Content :</label>
+            <textarea
+              label="Content :"
+              name="content"
+              placeholder="Content"
+              className="mb-4 w-full p-3"
+              rows={10}
+              value={formdata.content}
+              onChange={(e) => {
+                setFormdata({ ...formdata, content: e.target.value });
+              }}
+            ></textarea>
           </div>
-          <div className="px-4 sm:w-2/3 sm:px-2">
+
+          <div className="w-1/3 px-2">
             {imageSuccess ? (
-              <p className="text-green-700 text-center">
-                Image uploaded successfully
-              </p>
+              <p className="text-green-700">Image uploaded successfully</p>
             ) : (
-              <p className="text-blue-700 text-center">
-                Image is uploading please wait{" "}
-              </p>
+              <p className="text-blue-700">Image is uploading please wait </p>
             )}
             <Input
               label="Featured Image :"
@@ -126,14 +225,32 @@ function AddPost() {
               onChange={(e) => setImage(e.target.files[0])}
             />
             {/* {post && (
-              <div className="w-full mb-4">
+            <div className="w-full mb-4">
+              <img
+                src={appwriteService.getFilePreview(post.featuredImage)}
+                alt={post.title}
+                className="rounded-lg"
+              />
+            </div>
+          )} */}
+            {/* {formdata?.featuredImage?.length > 0 && (
+              // {/* // formdata?.featuredImage.map((url, index) => ( */}
+            {/* <div className="flex justify-between p-3 border items-center">
                 <img
-                  src={appwriteService.getFilePreview(post.featuredImage)}
-                  alt={post.title}
-                  className="rounded-lg"
+                  src={formdata.featuredImage}
+                  alt="listing image"
+                  className="w-20 h-20 object-contain rounded-lg"
                 />
-              </div>
-            )} */}
+                <button
+                  type="button"
+                  onClick={handleRemoveImage}
+                  className="p-3 text-red-700 rounded-lg uppercase hover:opacity-75"
+                >
+                  Delete
+                </button>
+              </div> */}
+            {/* )} */}
+            {/* ))} */}
             <Select
               options={["active", "inactive"]}
               label="Status"
@@ -150,7 +267,7 @@ function AddPost() {
               className="w-full"
             >
               {/* {post ? "Update" : "Submit"} */}
-              Submit
+              Add Post
             </Button>
           </div>
         </form>

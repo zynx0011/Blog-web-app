@@ -51,7 +51,7 @@ const Home = () => {
                     }}
                   >
                     <div className="absolute top-[29%] left-[13%] max-w-2xl flex flex-col gap-8">
-                      <h1 className="sm:text-5xl text-xl w-[60%] font-bold text-[#464895] uppercase sm:w-[60%] text-center p-2 bg-[#f9eded] ">
+                      <h1 className="sm:text-5xl text-xl w-[60%] font-bold text-[#464895] uppercase sm:w-full text-center p-2 bg-[#f9eded] ">
                         {post?.title}
                       </h1>
                       <p className="sm:text-2xl w-[80%] sm:w-full font-bold text-[#f9eded]">
@@ -89,16 +89,14 @@ const Home = () => {
                   <img
                     src={post.featuredImage}
                     alt="Blog Post"
-                    className="w-full h-48 object-cover"
+                    className="w-full h-48 object-cover hover:scale-110 duration-500"
                   />
                   <div className="p-6">
                     <h2 className="text-xl font-semibold mb-2">
                       {post?.title}
                     </h2>
                     <p className="text-gray-600">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Mauris lobortis odio id metus scelerisque, ut auctor magna
-                      fermentum.
+                      {post?.description.slice(0, 100)}
                     </p>
                     <a
                       href="#"
@@ -237,22 +235,18 @@ const Home = () => {
               <Link to={`/post/${post._id}`}>
                 <div
                   key={post._id}
-                  className="bg-white rounded-lg shadow-md overflow-hidden"
+                  className="bg-white rounded-lg shadow-md overflow-hidden "
                 >
                   <img
                     src={post.featuredImage}
                     alt="Blog Post"
-                    className="w-full h-48 object-cover"
+                    className="w-full h-48 object-cover hover:scale-110 duration-500  "
                   />
                   <div className="p-6">
-                    <h2 className="text-xl font-semibold mb-2">
-                      Blog Post Title
+                    <h2 className="text-xl font-semibold mb-2 ">
+                      {post.title}
                     </h2>
-                    <p className="text-gray-600">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Mauris lobortis odio id metus scelerisque, ut auctor magna
-                      fermentum.
-                    </p>
+                    <p className="text-gray-600 ">{post.description}</p>
                     <Link
                       to={`/post/${post._id}`}
                       className="text-blue-500 font-semibold mt-4 inline-block"

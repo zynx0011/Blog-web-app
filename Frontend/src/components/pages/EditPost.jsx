@@ -151,22 +151,18 @@ function AddPost() {
               }}
               value={formdata.description}
             />
-            <Input
-              label="Slug :"
-              placeholder="Slug"
-              className="mb-4"
-              type="text"
-              id="slug"
-              value={formdata.slug}
+            <label>Content :</label>
+            <textarea
+              label="Content :"
+              name="content"
+              placeholder="Content"
+              className="mb-4 w-full p-3"
+              rows={10}
+              value={formdata.content}
               onChange={(e) => {
-                setFormdata({ ...formdata, slug: e.target.value });
+                setFormdata({ ...formdata, content: e.target.value });
               }}
-              // onInput={(e) => {
-              //   setValue("slug", slugTransform(e.currentTarget.value), {
-              //     shouldValidate: true,
-              //   });
-              // }}
-            />
+            ></textarea>
           </div>
           {errorText ? (
             <div>
