@@ -27,7 +27,7 @@ const Home = () => {
   }, []);
 
   return loading ? (
-    <span className="loading loading-spinner loading-lg"></span>
+    <div className="text-4xl flex items-center justify-center ">Loading...</div>
   ) : (
     <>
       {/* slider  */}
@@ -112,6 +112,20 @@ const Home = () => {
           {/* Example of a blog post card */}
 
           {/* End of blog post cards */}
+        </div>
+      </div>
+
+      <div className="flex items-center flex-col gap-7 justify-center mt-7 mb-7 p-6">
+        <div className="div">
+          <h1 className="h1 font-bold text-5xl text-center">
+            {posts[2]?.title}
+          </h1>
+        </div>
+        <div className="div">
+          <Link to={`/post/${posts[2]?._id}`}>
+            {" "}
+            <img src={posts[2]?.featuredImage} alt="" className="img" />
+          </Link>
         </div>
       </div>
 
@@ -261,7 +275,7 @@ const Home = () => {
           {/* Example of a blog post card */}
           <div className="bg-white rounded-lg shadow-md overflow-hidden">
             <img
-              src="https://via.placeholder.com/800x400"
+              src="https://cdn.shopify.com/s/files/1/0070/7032/files/shopify-blog-example.png?v=1645194659"
               alt="Blog Post"
               className="w-full h-48 object-cover"
             />
