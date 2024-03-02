@@ -17,9 +17,11 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorText, setErrorText] = useState(false);
+  const [success, setSuccess] = useState(false);
   const dispatch = useDispatch();
   const submitHandler = async (e) => {
     setErrorText(false);
+    setSuccess(true);
     e.preventDefault();
     try {
       dispatch(signInStart());
@@ -32,6 +34,7 @@ function Login() {
       setErrorText(false);
     } catch (error) {
       dispatch(signInFailure(error.message));
+      setSuccess(false);
       console.log(error);
       setErrorText(true);
     }
@@ -47,6 +50,17 @@ function Login() {
       });
     }
   }, [errorText]);
+
+  useEffect(() => {
+    if (success) {
+      // Call toast function when errorText changes to true
+      toast({
+        title: "Logged in successfullydd",
+        variant: "success",
+        description: "The user has been logged in successfully.",
+      });
+    }
+  }, [success]);
 
   return (
     <div className="flex items-center justify-center w-full  max-h-screen p-[15%]">
@@ -82,6 +96,22 @@ function Login() {
         {errorText && (
           <div>
             <ToastAction description="There was a problem with your request." />
+          </div>
+        )}
+        {success && (
+          <div className="bg-green-500">
+            <ToastAction
+              badgeTitle="Success"
+              title="Logged in successfullydd"
+              variant="success"
+              badgeColor="bg-green-500"
+              badgeTextColor="text-white"
+              titleColor="text-white"
+              descriptionColor="text-white"
+              titleVariant="bold"
+              descriptionVariant="medium"
+              description="Logged in successfully"
+            />
           </div>
         )}
         <form onSubmit={submitHandler} className="mt-8">
