@@ -18,6 +18,7 @@ function Login() {
   const [password, setPassword] = useState("");
   const [errorText, setErrorText] = useState(false);
   const [success, setSuccess] = useState(false);
+  const path = "https://blog-app-backend-c9w1.onrender.com/api/v1";
   const dispatch = useDispatch();
   const submitHandler = async (e) => {
     setErrorText(false);
@@ -25,7 +26,7 @@ function Login() {
     e.preventDefault();
     try {
       dispatch(signInStart());
-      const res = await axios.post("/api/v1/users/SignIn", {
+      const res = await axios.post(`${path}/users/SignIn`, {
         email,
         password,
       });

@@ -9,10 +9,12 @@ function AllPosts() {
   const authStatus = useSelector((state) => {
     state.auth.status;
   });
+  const path = "https://blog-app-backend-c9w1.onrender.com/api/v1";
+
   useEffect(() => {
     const data = async () => {
       try {
-        const res = await axios.get("/api/v1/listing/get");
+        const res = await axios.get(`${path}/listing/get`);
         console.log(res);
         setPosts(res.data.data);
       } catch (error) {

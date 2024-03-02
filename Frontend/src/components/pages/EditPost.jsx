@@ -37,6 +37,7 @@ function AddPost() {
   const [imageSuccess, setImageSuccess] = useState(false);
   const [updateSuccess, setUpdateSuccess] = useState(false);
   const [errorText, setErrorText] = useState(false);
+  const path = "https://blog-app-backend-c9w1.onrender.com/api/v1";
 
   const params = useParams();
 
@@ -54,7 +55,7 @@ function AddPost() {
   useEffect(() => {
     const fetchListing = async () => {
       const listingId = params.slug;
-      const res = await axios.get(`/api/v1/listing/get/${listingId}`);
+      const res = await axios.get(`${path}/listing/get/${listingId}`);
       // console.log(res.data.data);
       setFormdata(res.data.data);
     };
@@ -107,7 +108,7 @@ function AddPost() {
     e.preventDefault();
     try {
       setErrorText(false);
-      const res = await axios.post(`/api/v1/listing/update/${params.slug}`, {
+      const res = await axios.post(`${path}/listing/update/${params.slug}`, {
         ...formdata,
         userRef: currentUser?._id || data?._id,
       });
