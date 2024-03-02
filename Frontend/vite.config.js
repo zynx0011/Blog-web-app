@@ -6,7 +6,7 @@ import path from "path";
 export default defineConfig({
   server: {
     proxy: {
-      "/api": "https://blog-app-backend-c9w1.onrender.com/api",
+      "/api": "https://blog-app-backend-c9w1.onrender.coma",
     },
   },
   plugins: [react()],
