@@ -49,9 +49,6 @@ function Login() {
         description: "There was a problem with your request.",
       });
     }
-  }, [errorText]);
-
-  useEffect(() => {
     if (success) {
       // Call toast function when errorText changes to true
       toast({
@@ -60,7 +57,7 @@ function Login() {
         description: "The user has been logged in successfully.",
       });
     }
-  }, [success]);
+  }, [errorText, success]);
 
   return (
     <div className="flex items-center justify-center w-full  max-h-screen p-[15%]">
