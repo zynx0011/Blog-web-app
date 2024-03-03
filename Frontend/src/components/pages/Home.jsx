@@ -43,7 +43,7 @@ const Home = () => {
           {posts &&
             posts.length > 0 &&
             posts.map((post) => (
-              <div className="each-slide-effect relative " key={post?._id}>
+              <div className="each-slide-effect relative" key={post?._id}>
                 <div className="w-full min-h-[70vh] sm:min-h-screen ">
                   <div
                     className="w-full h-[100%] sm:h-[100vh] bg-cover bg-center"
