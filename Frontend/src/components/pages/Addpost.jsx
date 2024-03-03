@@ -173,10 +173,10 @@ function AddPost() {
       <Container>
         <h1 className="text-4xl font-bold text-center mb-16">Post Your Blog</h1>
         <form onSubmit={handleSubmit} className="flex flex-wrap">
-          <div className="w-2/3 px-2">
+          <div className="w-2/3 px-2 ">
             <Input
-              label="Title :"
-              placeholder="Title"
+              label="Title : "
+              placeholder="Title "
               className="mb-4"
               type="text"
               id="title"
@@ -188,7 +188,7 @@ function AddPost() {
             <Input
               label="Description :"
               placeholder="Description"
-              className="mb-4"
+              className="mb-4 "
               type="text"
               id="description"
               onChange={(e) => {
