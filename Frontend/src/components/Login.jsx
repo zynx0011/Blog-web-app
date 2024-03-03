@@ -61,7 +61,7 @@ function Login() {
   }, [errorText, success]);
 
   return (
-    <div className="flex items-center justify-center w-full  max-h-screen p-[15%]">
+    <div className="flex items-center justify-center w-full  max-h-screen p-3 sm:p-[15%]">
       <div className="div w-10 bg-gradient-to-r from-violet-600 to-indigo-600 h-[532px] sm:ml-[16%] flex items-center justify-center rounded-xl sm:w-[30%]">
         <div className="sm:text-3xl hidden sm:block text-xl p-3 sm:p-0 text-center font-bold">
           <h1>

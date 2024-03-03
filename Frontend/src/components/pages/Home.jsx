@@ -32,7 +32,7 @@ const Home = () => {
   ) : (
     <>
       {/* slider  */}
-      <div className="w-full  h-[100vh]">
+      <div className="w-full  sm:h-[100vh]">
         <Slide
           duration={3500}
           autoplay={true}
@@ -44,9 +44,9 @@ const Home = () => {
             posts.length > 0 &&
             posts.map((post) => (
               <div className="each-slide-effect relative " key={post?._id}>
-                <div className="w-full min-h-screen ">
+                <div className="w-full min-h-[70vh] sm:min-h-screen ">
                   <div
-                    className="w-full h-[100vh] bg-cover bg-center"
+                    className="w-full h-[100%] sm:h-[100vh] bg-cover bg-center"
                     style={{
                       backgroundImage: ` linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${post?.featuredImage})`, //url(post?.featuredImage),
                     }}

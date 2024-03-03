@@ -127,8 +127,15 @@ const Header = () => {
           )}
         </Menu>
         {authStatus && (
-          <li className="absolute right-3 -top-1   ">
+          <li className="absolute right-3 -top-2 flex items-center justify-center  ">
             <LogoutBtn />
+          </li>
+        )}
+        {!authStatus && (
+          <li className="absolute right-3 -top-2  flex items-center justify-center ">
+            <Link to="/signup">
+              <button className=" p-3 hover:underline">Signup</button>
+            </Link>
           </li>
         )}
       </div>
