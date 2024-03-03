@@ -58,7 +58,7 @@ const Home = () => {
                       <p className="sm:text-2xl w-[80%] sm:w-full font-bold text-[#f9eded]">
                         Multiple lines of text that form the lede, informing new
                         readers quickly and efficiently about what's most
-                        interesting in this post's contents.
+                        interesting in this post's contents .
                       </p>
                       <Link
                         to={`/post/${post._id}`}
