@@ -18,7 +18,6 @@ function Signup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { toast } = useToast();
-  const path = "https://blog-app-backend-c9w1.onrender.com/api/v1";
 
   useEffect(() => {
     if (error) {
@@ -36,7 +35,7 @@ function Signup() {
     try {
       setLoading(true);
       setError(false);
-      const res = await axios.post(`${path}/users/Signup`, {
+      const res = await axios.post(`/api/v1/users/Signup`, {
         username,
         email,
         password,

@@ -9,13 +9,12 @@ const Home = () => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
   const { currentUser } = useSelector((state) => state.auth);
-  const path = "https://blog-app-backend-c9w1.onrender.com/api/v1";
 
   useEffect(() => {
     const data = async () => {
       setLoading(true);
       try {
-        const res = await axios.get(`${path}/listing/get`);
+        const res = await axios.get(`/api/v1/listing/get`);
         console.log(res);
         setPosts(res.data.data);
         setLoading(false);

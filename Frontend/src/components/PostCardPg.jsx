@@ -14,14 +14,13 @@ const PostCardPg = () => {
   const { currentUser } = useSelector((state) => state.auth);
   const data = currentUser?.data?.data?.user;
   const data2 = currentUser?.user;
-  const path = "https://blog-app-backend-c9w1.onrender.com/api/v1";
 
   const navigate = useNavigate();
   //   console.log(data);
   //   console.log(currentUser);
   //   console.log(isAuthor);
   //   console.log(post?.userRef);
-  console.log(post?.content);
+  // console.log(post?.content);
 
   useEffect(() => {
     // if (currentUser?._id || data?._id === post?.userRef) {
@@ -31,8 +30,8 @@ const PostCardPg = () => {
     // }
     const posts = async (e) => {
       try {
-        const res = await axios.get(`${path}/listing/get/${params.id}`);
-        console.log(res);
+        const res = await axios.get(`/api/v1/listing/get/${params.id}`);
+        // console.log(res);
         setPost(res.data.data);
       } catch (error) {
         console.log(error, "error in postcardpg");
@@ -44,7 +43,7 @@ const PostCardPg = () => {
 
   const deletePost = async () => {
     try {
-      const res = await axios.delete(`${path}/listing/delete/${params.id}`);
+      const res = await axios.delete(`/api/v1/listing/delete/${params.id}`);
       navigate("/");
     } catch (error) {
       console.log(error, "error in delete post");

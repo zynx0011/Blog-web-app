@@ -30,7 +30,6 @@ function AddPost() {
   const [image, setImage] = useState(undefined);
   const [imageError, setImageError] = useState(false);
   const [imageSuccess, setImageSuccess] = useState(false);
-  const path = "https://blog-app-backend-c9w1.onrender.com/api/v1";
 
   useEffect(() => {
     if (image) {
@@ -67,7 +66,7 @@ function AddPost() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post(`${path}/listing/create`, {
+      const res = await axios.post(`/api/v1/listing/create`, {
         ...formdata,
         userRef: currentUser?._id || data?._id || data2?._id,
       });
