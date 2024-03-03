@@ -175,7 +175,7 @@ function AddPost() {
         <form onSubmit={handleSubmit} className="flex flex-wrap">
           <div className="w-2/3 px-2 ">
             <Input
-              label="Title : "
+              label="Title :"
               placeholder="Title "
               className="mb-4"
               type="text"
