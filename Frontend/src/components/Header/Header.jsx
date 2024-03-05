@@ -31,6 +31,9 @@ const ITEM_HEIGHT = 48;
 const Header = () => {
   // To Access the store we use UseSelector
   const authStatus = useSelector((state) => state.auth.status);
+  const { currentUser } = useSelector((state) => state.auth);
+  const data = currentUser?.user;
+
   // useNavigate is also like a router
   const navigate = useNavigate();
 
@@ -56,8 +59,13 @@ const Header = () => {
       active: authStatus,
     },
     {
-      name: "Add Post",
-      slug: "/add-post",
+      name: "My Post",
+      slug: `/my-posts/${data?._id || currentUser?._id}`,
+      active: authStatus,
+    },
+    {
+      name: "Profile",
+      slug: `/profile/${data?._id || currentUser?._id}`,
       active: authStatus,
     },
   ];

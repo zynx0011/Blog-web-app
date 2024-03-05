@@ -20,6 +20,8 @@ import {
 } from "react-router-dom";
 import PrivateRoute from "./components/PrivateRoutes.jsx";
 import PostCardPg from "./components/PostCardPg.jsx";
+import Myposts from "./components/pages/Myposts.jsx";
+import Profile from "./components/pages/Profile.jsx";
 
 // const router = createBrowserRouter([
 //   {
@@ -95,6 +97,8 @@ const router = createBrowserRouter(
         <Route path="/logout" element={<LogoutBtn />} />
         <Route path="/edit-post/:slug" element={<EditPost />} />
         <Route path="/post/:id" element={<PostCardPg />} />
+        <Route path="/my-posts/:id" element={<Myposts />} />
+        <Route path="/profile/:id" element={<Profile />} />
       </Route>
     </Route>
   )

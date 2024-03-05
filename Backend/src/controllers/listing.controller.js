@@ -60,4 +60,22 @@ const getListings = asyncHandler(async (req, res) => {
   return res.status(200).json(new ApiResponse(200, listing, " listings found"));
 });
 
-export { createListing, deleteListing, updateListing, getListing, getListings };
+const myListing = asyncHandler(async (req, res) => {
+  const { userId } = req.params;
+  const listings = await Listing.find({ userRef: userId });
+  if (!listings) {
+    throw new ApiError(404, "Listing not found");
+  }
+  return res
+    .status(200)
+    .json(new ApiResponse(200, listings, " listings found"));
+});
+
+export {
+  createListing,
+  deleteListing,
+  updateListing,
+  getListing,
+  getListings,
+  myListing,
+};

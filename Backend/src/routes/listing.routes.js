@@ -6,6 +6,7 @@ import {
   updateListing,
   getListing,
   getListings,
+  myListing,
 } from "../controllers/listing.controller.js";
 
 const router = Router();
@@ -15,5 +16,6 @@ router.delete("/delete/:id", verifyToken, deleteListing);
 router.post("/update/:id", verifyToken, updateListing);
 router.get("/get/:id", getListing);
 router.get("/get", getListings);
+router.get("/my-posts/:userId", verifyToken, myListing);
 
 export default router;
