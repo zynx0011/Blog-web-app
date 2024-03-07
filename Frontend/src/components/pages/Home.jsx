@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Slide } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
 import { useSelector } from "react-redux";
@@ -9,13 +9,15 @@ const Home = () => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
   const { currentUser } = useSelector((state) => state.auth);
+  const [search, setSearch] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     const data = async () => {
       setLoading(true);
       try {
         const res = await axios.get(`/api/v1/listing/get`);
-        console.log(res);
+        // console.log(res);
         setPosts(res.data.data);
         setLoading(false);
       } catch (error) {
@@ -25,6 +27,25 @@ const Home = () => {
     };
     data();
   }, []);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const urlParams = new URLSearchParams(window.location.search);
+    urlParams.set("searchTerms", search);
+
+    const serachQuery = urlParams.toString();
+    console.log(serachQuery);
+
+    navigate(`/search?/${serachQuery}`);
+  };
+
+  // useEffect(() => {
+  //   const urlParams = new URLSearchParams(location.search);
+  //   const searchTermFromUrl = urlParams.get("searchTerms");
+  //   if (searchTermFromUrl) {
+  //     setSearch(searchTermFromUrl);
+  //   }
+  // }, [location.search]);
 
   return loading ? (
     <div className="text-4xl flex items-center justify-center ">Loading...</div>
@@ -114,6 +135,44 @@ const Home = () => {
           {/* End of blog post cards */}
         </div>
       </div>
+
+      {/* email section */}
+      {
+        <div class="relative mx-auto my-5 max-w-4xl mt-20 w-full mb-11 rounded-lg bg-indigo-100 shadow-lg">
+          <div class="p-8 md:p-12 lg:px-16">
+            <div class="">
+              <h2 class="text-2xl font-bold text-indigo-900 md:text-3xl">
+                Wanna Find Out More About a Blog?
+              </h2>
+
+              <p class="hidden text-indigo-900 sm:mt-4 sm:block">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere
+                temporibus dicta mollitia!
+              </p>
+            </div>
+
+            <div class="mt-8 max-w-xl">
+              <form onSubmit={handleSubmit}>
+                <div class="sm:flex">
+                  <input
+                    type="text"
+                    class="w-full rounded-md border border-indigo-200 p-3 text-sm bg-indigo-300 font-semibold placeholder:text-black"
+                    placeholder="Search"
+                    value={search}
+                    onChange={(e) => setSearch(e.target.value)}
+                  />
+                  <Link
+                    to={"/search?/"}
+                    className="group mt-4 flex w-full items-center justify-center rounded-md bg-indigo-600 px-5 py-3 text-white transition focus:outline-none focus:ring focus:ring-indigo-400 sm:mt-0 sm:w-auto"
+                  >
+                    Search
+                  </Link>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      }
 
       <div className="flex items-center flex-col gap-7 justify-center mt-7 mb-7 p-6">
         <div className="div">

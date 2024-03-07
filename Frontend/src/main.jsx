@@ -22,6 +22,10 @@ import PrivateRoute from "./components/PrivateRoutes.jsx";
 import PostCardPg from "./components/PostCardPg.jsx";
 import Myposts from "./components/pages/Myposts.jsx";
 import Profile from "./components/pages/Profile.jsx";
+import ChangePass from "./components/pages/ChangePass.jsx";
+import ForgotPass from "./components/pages/ForgotPass.jsx";
+import ForgotpassPg from "./components/pages/NewPasswordPage.jsx";
+import Search from "./components/pages/Search.jsx";
 
 // const router = createBrowserRouter([
 //   {
@@ -81,16 +85,12 @@ const router = createBrowserRouter(
       <Route path="/" element={<Home />} />
       {/* <Route path="/about" element={<About />} /> */}
       {/* <Route path="/contact" element={<Contact />} /> */}
-      {/* <Route path="/api/v1/users/forgotPassword" element={<ForgotPass />} />
-      <Route
-        path="/reset-password/:userId/:token"
-        element={<ForgotPassPopUp />}
-      /> */}
+      <Route path="/api/v1/users/forgotPassword" element={<ForgotPass />} />
+      <Route path="/reset-password/:userId" element={<ForgotpassPg />} />
       <Route path="/signup" element={<Signup />} />
       <Route path="/Login" element={<Login />} />
-      {/* <Route path="/search?/" element={<Search />} /> */}
-      {/* <Route path="/listing/:listingId" element={<ListingPg />} /> */}
-
+      // <Route path="/search?/" element={<Search />} />
+      // {/* <Route path="/listing/:listingId" element={<ListingPg />} /> */}
       <Route element={<PrivateRoute />}>
         <Route path="/all-posts" element={<AllPosts />} />
         <Route path="/add-post" element={<AddPost />} />
@@ -99,6 +99,7 @@ const router = createBrowserRouter(
         <Route path="/post/:id" element={<PostCardPg />} />
         <Route path="/my-posts/:id" element={<Myposts />} />
         <Route path="/profile/:id" element={<Profile />} />
+        <Route path="/change-password" element={<ChangePass />} />
       </Route>
     </Route>
   )

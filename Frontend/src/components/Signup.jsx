@@ -42,7 +42,7 @@ function Signup() {
       });
       navigate("/");
       console.log(res);
-      dispatch(signInSuccess(res.data));
+      dispatch(signInSuccess(res.data.data));
       setLoading(false);
     } catch (error) {
       setLoading(false);

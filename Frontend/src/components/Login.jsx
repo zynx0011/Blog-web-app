@@ -128,6 +128,18 @@ function Login() {
               onChange={(e) => setPassword(e.target.value)}
               className="mb-7"
             />
+            <div className="form-field">
+              <div className="form-control justify-between">
+                <label className="form-label">
+                  <Link to={"/api/v1/users/forgotPassword"}>
+                    <button className="link hover:underline link-primary text-sm text-blue-700">
+                      Forgot your password?
+                    </button>
+                  </Link>
+                </label>
+              </div>
+            </div>
+
             <Button type="submit" className=" w-full  bg-indigo-500">
               Sign in
             </Button>

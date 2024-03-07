@@ -7,13 +7,15 @@ import {
   getDownloadURL,
 } from "firebase/storage";
 import { app } from "../../../Firebase";
-import { useForm } from "react-hook-form";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import Alert from "@mui/material/Alert";
+import { useToast } from "@/components/ui/use-toast";
 
 function AddPost() {
   const navigate = useNavigate();
+  const { toast } = useToast();
   const { currentUser } = useSelector((state) => state.auth);
   const data = currentUser?.data?.data?.user;
   const data2 = currentUser?.user;
@@ -26,10 +28,11 @@ function AddPost() {
     status: true,
   });
 
-  console.log(formdata);
+  // console.log(formdata);
   const [image, setImage] = useState(undefined);
   const [imageError, setImageError] = useState(false);
   const [imageSuccess, setImageSuccess] = useState(false);
+  const [Error, setError] = useState(false);
 
   useEffect(() => {
     if (image) {
@@ -65,17 +68,22 @@ function AddPost() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setError(false);
+
     try {
       const res = await axios.post(`/api/v1/listing/create`, {
         ...formdata,
         userRef: currentUser?._id || data?._id || data2?._id,
       });
+      setError(false);
       console.log(res);
       navigate("/");
     } catch (error) {
+      setError(true, "error");
       console.log(error);
     }
   };
+
   return (
     // <div className="py-8">
     //   <Container>
@@ -270,6 +278,16 @@ function AddPost() {
               Add Post
             </Button>
           </div>
+          {Error ? (
+            <Alert
+              variant="filled"
+              severity="error"
+              className="absolute right-3 top-[16%] "
+              sx={{ width: "20%" }}
+            >
+              This is a filled error Alert.
+            </Alert>
+          ) : null}
         </form>
       </Container>
     </div>

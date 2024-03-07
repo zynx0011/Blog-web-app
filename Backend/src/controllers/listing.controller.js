@@ -71,6 +71,28 @@ const myListing = asyncHandler(async (req, res) => {
     .json(new ApiResponse(200, listings, " listings found"));
 });
 
+const getListingsBySearch = asyncHandler(async (req, res) => {
+  const limit = parseInt(req.query.limit) || 9;
+  const startIndex = parseInt(req.query.startIndex) || 0;
+
+  const searchTerms = req.query.searchTerms || "";
+  console.log(searchTerms);
+  const sort = req.query.sort || "createdAt";
+  const order = req.query.order || "desc";
+
+  const listing = await Listing.find({
+    title: { $regex: searchTerms, $options: "i" },
+    // title: { $regex: new RegExp(searchTerms, "i") }, // Case-insensitive search
+  })
+    .sort({ [sort]: order })
+    .limit(limit)
+    .skip(startIndex);
+
+  return res
+    .status(200)
+    .json(new ApiResponse(200, { listing }, " listings found"));
+});
+
 export {
   createListing,
   deleteListing,
@@ -78,4 +100,5 @@ export {
   getListing,
   getListings,
   myListing,
+  getListingsBySearch,
 };

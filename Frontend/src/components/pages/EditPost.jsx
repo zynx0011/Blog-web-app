@@ -13,13 +13,12 @@ import { app } from "../../../Firebase";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
+import { Alert } from "@mui/material";
 
 function AddPost() {
   const toast = useToast();
   const { control } = useForm();
-  const navigate = useNavigate();
   const { currentUser } = useSelector((state) => state.auth);
   const data = currentUser?.data?.data?.user;
   const [formdata, setFormdata] = useState({
@@ -36,20 +35,20 @@ function AddPost() {
   const [imageError, setImageError] = useState(false);
   const [imageSuccess, setImageSuccess] = useState(false);
   const [updateSuccess, setUpdateSuccess] = useState(false);
-  const [errorText, setErrorText] = useState(false);
+  // const [errorText, setErrorText] = useState(false);
 
   const params = useParams();
 
-  useEffect(() => {
-    if (errorText) {
-      // Call toast function when errorText changes to true
-      toast({
-        variant: "destructive",
-        title: "Please check your credentials.",
-        description: "There was a problem with your request.",
-      });
-    }
-  }, [errorText]);
+  // useEffect(() => {
+  //   if (errorText) {
+  //     // Call toast function when errorText changes to true
+  //     toast({
+  //       variant: "destructive",
+  //       title: "Please check your credentials.",
+  //       description: "There was a problem with your request.",
+  //     });
+  //   }
+  // }, [errorText]);
 
   useEffect(() => {
     const fetchListing = async () => {
@@ -106,19 +105,22 @@ function AddPost() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      setErrorText(false);
+      // setErrorText(false);
       const res = await axios.post(`/api/v1/listing/update/${params.slug}`, {
         ...formdata,
         userRef: currentUser?._id || data?._id,
       });
-      console.log(res);
-      navigate("/");
-      setErrorText(false);
+      // console.log(res);
+      // setErrorText(false);
+      setUpdateSuccess(true);
     } catch (error) {
-      setErrorText(true);
+      // setErrorText(true);
+      setUpdateSuccess(false);
       console.log(error);
     }
   };
+
+  // console.log(updateSuccess);
 
   const handleRemoveImage = () => {
     setFormdata({ ...formdata, featuredImage: "" });
@@ -164,7 +166,7 @@ function AddPost() {
               }}
             ></textarea>
           </div>
-          {errorText ? (
+          {/* {errorText ? (
             <div>
               <ToastAction description="There was a problem with your request." />
             </div>
@@ -172,6 +174,16 @@ function AddPost() {
             <div>
               <ToastAction description="There was a problem with your request." />
             </div>
+          )} */}
+          {updateSuccess && (
+            <Alert
+              variant="filled"
+              severity="success"
+              className="absolute right-3 top-[16%] "
+              sx={{ width: "20%" }}
+            >
+              Successfully Updated Information
+            </Alert>
           )}
           <div className="w-1/3 px-2">
             {imageSuccess ? (
