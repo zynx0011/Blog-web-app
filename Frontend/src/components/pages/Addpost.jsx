@@ -177,11 +177,16 @@ function AddPost() {
     //   </Container>
     // </div>
 
-    <div className="py-8">
+    <div className="py-8 text-white">
       <Container>
-        <h1 className="text-4xl font-bold text-center mb-16">Post Your Blog</h1>
-        <form onSubmit={handleSubmit} className="flex flex-wrap">
-          <div className="w-2/3 px-2 ">
+        <h1 className="text-4xl font-bold text-center mb-16 text-white">
+          Post Your Blog
+        </h1>
+        <form
+          onSubmit={handleSubmit}
+          className="flex flex-wrap flex-col sm:flex-row"
+        >
+          <div className="sm:w-2/3 px-2 ">
             <Input
               label="Title :"
               placeholder="Title "
@@ -209,7 +214,7 @@ function AddPost() {
               label="Content :"
               name="content"
               placeholder="Content"
-              className="mb-4 w-full p-3"
+              className="mb-4 w-full p-3 text-black"
               rows={10}
               value={formdata.content}
               onChange={(e) => {
@@ -218,7 +223,7 @@ function AddPost() {
             ></textarea>
           </div>
 
-          <div className="w-1/3 px-2">
+          <div className="sm:w-1/3 px-2">
             {imageSuccess ? (
               <p className="text-green-700">Image uploaded successfully</p>
             ) : (

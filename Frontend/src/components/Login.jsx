@@ -17,11 +17,9 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorText, setErrorText] = useState(false);
-  const [success, setSuccess] = useState(false);
   const dispatch = useDispatch();
   const submitHandler = async (e) => {
     setErrorText(false);
-    setSuccess(true);
     e.preventDefault();
     try {
       dispatch(signInStart());
@@ -34,7 +32,6 @@ function Login() {
       setErrorText(false);
     } catch (error) {
       dispatch(signInFailure(error.message));
-      setSuccess(false);
       console.log(error);
       setErrorText(true);
     }
@@ -49,26 +46,21 @@ function Login() {
         description: "There was a problem with your request.",
       });
     }
-    if (success) {
-      // Call toast function when errorText changes to true
-      toast({
-        title: "Logged in successfullydd",
-        variant: "success",
-        description: "The user has been logged in successfully.",
-      });
-    }
-  }, [errorText, success]);
+  }, [errorText]);
 
   return (
     <div className="flex items-center justify-center w-full  max-h-screen p-3 sm:p-[15%]">
-      <div className="div w-10 bg-gradient-to-r from-violet-600 to-indigo-600 h-[532px] sm:ml-[16%] flex items-center justify-center rounded-xl sm:w-[30%]">
-        <div className="sm:text-3xl hidden sm:block text-xl p-3 sm:p-0 text-center font-bold">
+      <div className="div w-10 bg-gradient-to-r from-slate-700 via-slate-800 to-slate-900 h-[532px] border sm:ml-[16%] flex items-center justify-center rounded-xl sm:w-[30%]">
+        <div className="sm:text-3xl hidden sm:block text-xl p-3 sm:p-0 text-center text-white font-bold">
           <h1>
-            Welcome To <span className="text-white">Express</span>
+            Welcome To{" "}
+            <span className="bg-gradient-to-r from-blue-600 via-green-500 to-indigo-400 inline-block text-transparent bg-clip-text text-4xl">
+              Express
+            </span>
           </h1>
         </div>
       </div>
-      <div className="mx-auto   sm:w-full max-w-lg  h-[532px] sm:mr-[12%] bg-white rounded-xl p-10 border  backdrop-blur-lg border-black/10">
+      <div className="mx-auto   sm:w-full max-w-lg  text-[#10172a] h-[532px] sm:mr-[12%]  bg-white  rounded-xl p-10 border  backdrop-blur-lg border-white/10">
         <div className="mb-2 flex justify-center">
           <span className="inline-block w-full max-w-[100px]">
             <Logo width="100%" />
@@ -95,22 +87,7 @@ function Login() {
             <ToastAction description="There was a problem with your request." />
           </div>
         )}
-        {success && (
-          <div className="bg-green-500">
-            <ToastAction
-              badgeTitle="Success"
-              title="Logged in successfullydd"
-              variant="success"
-              badgeColor="bg-green-500"
-              badgeTextColor="text-white"
-              titleColor="text-white"
-              descriptionColor="text-white"
-              titleVariant="bold"
-              descriptionVariant="medium"
-              description="Logged in successfully"
-            />
-          </div>
-        )}
+
         <form onSubmit={submitHandler} className="mt-8">
           <div className="space-y-5">
             <Input
@@ -118,6 +95,7 @@ function Login() {
               placeholder="Enter your email"
               type="email"
               value={email}
+              className="outline-black/30"
               onChange={(e) => setEmail(e.target.value)}
             />
             <Input
@@ -126,7 +104,7 @@ function Login() {
               placeholder="Enter your password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="mb-7"
+              className="outline-black/30 mb-7"
             />
             <div className="form-field">
               <div className="form-control justify-between">
@@ -140,7 +118,7 @@ function Login() {
               </div>
             </div>
 
-            <Button type="submit" className=" w-full  bg-indigo-500">
+            <Button type="submit" className=" w-full  bg-blue-500">
               Sign in
             </Button>
           </div>

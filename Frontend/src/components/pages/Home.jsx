@@ -4,6 +4,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { Slide } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
 import { useSelector } from "react-redux";
+import CircularProgress from "@mui/material/CircularProgress";
+import Box from "@mui/material/Box";
 
 const Home = () => {
   const [posts, setPosts] = useState([]);
@@ -48,7 +50,11 @@ const Home = () => {
   // }, [location.search]);
 
   return loading ? (
-    <div className="text-4xl flex items-center justify-center ">Loading...</div>
+    <div className="flex items-center justify-center text-white min-h-screen">
+      <Box>
+        <CircularProgress />
+      </Box>
+    </div>
   ) : (
     <>
       {/* slider  */}
@@ -71,18 +77,18 @@ const Home = () => {
                       backgroundImage: ` linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${post?.featuredImage})`, //url(post?.featuredImage),
                     }}
                   >
-                    <div className="absolute top-[29%] left-[13%] max-w-2xl flex flex-col gap-8">
-                      <h1 className="sm:text-5xl text-xl w-[60%] font-bold text-[#464895] uppercase sm:w-full text-center p-2 bg-[#f9eded] ">
+                    <div className="absolute top-[25%] left-[13%] max-w-2xl flex flex-col gap-5">
+                      <h1 className="sm:text-5xl text-xl w-[60%] font-bold text-white uppercase sm:w-full  p-2 ">
                         {post?.title}
                       </h1>
-                      <p className="sm:text-2xl w-[80%] sm:w-full font-bold text-[#f9eded]">
+                      <p className="sm:text-2xl w-[80%] sm:w-full ml-2 font-bold text-[#f9eded]">
                         Multiple lines of text that form the lede, informing new
                         readers quickly and efficiently about what's most
                         interesting in this post's contents .
                       </p>
                       <Link
                         to={`/post/${post._id}`}
-                        className="bg-[#3f418d] w-[44%] hover:bg-[#464895] sm:w-[24%] text-center text-[#f9eded] font-bold py-2 sm:mt-3 px-4 rounded"
+                        className="bg-[#1f2937]   w-[44%] hover:bg-[#253142] sm:w-[24%] text-center text-[#f9eded] font-bold py-2 ml-5 sm:mt-2 px-4 rounded"
                       >
                         Read More
                       </Link>
@@ -95,33 +101,32 @@ const Home = () => {
       </div>
 
       {/* //card */}
-      <div className="container mx-auto px-4  mt-12 py-8">
-        <h1 className="text-4xl font-bold mb-8">Latest Blog Posts</h1>
+      <div className="container mx-auto px-4 mt-12 py-8">
+        <h1 className="text-4xl font-bold mb-8 text-white">
+          Latest Blog Posts
+        </h1>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {/* Sample blog post cards */}
           {posts &&
             posts.length > 0 &&
             posts.map((post) => (
-              <Link to={`/post/${post._id}`}>
-                <div
-                  key={post._id}
-                  className="bg-white rounded-lg shadow-md overflow-hidden"
-                >
+              <Link to={`/post/${post._id}`} key={post._id}>
+                <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg">
                   <img
                     src={post.featuredImage}
                     alt="Blog Post"
-                    className="w-full h-48 object-cover hover:scale-110 duration-500"
+                    className="w-full h-48 object-cover transform hover:scale-110 duration-300"
                   />
                   <div className="p-6">
-                    <h2 className="text-xl font-semibold mb-2">
+                    <h2 className="text-xl font-semibold mb-2 text-gray-800 hover:text-blue-500">
                       {post?.title}
                     </h2>
-                    <p className="text-gray-600">
+                    <p className="text-gray-600 mb-4">
                       {post?.description.slice(0, 100)}
                     </p>
                     <a
                       href="#"
-                      className="text-blue-500 font-semibold mt-4 inline-block"
+                      className="text-blue-500 font-semibold hover:underline"
                     >
                       Read more...
                     </a>
@@ -138,14 +143,14 @@ const Home = () => {
 
       {/* email section */}
       {
-        <div class="relative mx-auto my-5 max-w-4xl mt-20 w-full mb-11 rounded-lg bg-indigo-100 shadow-lg">
+        <div class="relative mx-auto my-5 max-w-4xl mt-20 w-full mb-11 rounded-lg bg-[#f9eded] shadow-lg">
           <div class="p-8 md:p-12 lg:px-16">
             <div class="">
-              <h2 class="text-2xl font-bold text-indigo-900 md:text-3xl">
+              <h2 class="text-2xl font-bold text-[#1f2937] md:text-3xl">
                 Wanna Find Out More About a Blog?
               </h2>
 
-              <p class="hidden text-indigo-900 sm:mt-4 sm:block">
+              <p class="hidden text-[#1f2937] sm:mt-4 sm:block">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere
                 temporibus dicta mollitia!
               </p>
@@ -156,7 +161,7 @@ const Home = () => {
                 <div class="sm:flex">
                   <input
                     type="text"
-                    class="w-full rounded-md border border-indigo-200 p-3 text-sm bg-indigo-300 font-semibold placeholder:text-black"
+                    class="w-full rounded-md border border-indigo-200 p-3 text-sm bg-[#f9eded] font-semibold placeholder:text-black"
                     placeholder="Search"
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
@@ -176,7 +181,7 @@ const Home = () => {
 
       <div className="flex items-center flex-col gap-7 justify-center mt-7 mb-7 p-6">
         <div className="div">
-          <h1 className="h1 font-bold text-5xl text-center">
+          <h1 className="h1 font-bold text-5xl text-center text-white">
             {posts[2]?.title}
           </h1>
         </div>
@@ -234,14 +239,14 @@ const Home = () => {
       </div>
 
       {/* email section */}
-      <div class="relative mx-auto my-5 max-w-4xl mt-20 w-full mb-11 rounded-lg bg-indigo-100 shadow-lg">
+      <div class="relative mx-auto my-5 max-w-4xl mt-20 w-full mb-11 rounded-lg bg-[#f9eded] shadow-lg">
         <div class="p-8 md:p-12 lg:px-16">
           <div class="max-w-lg">
-            <h2 class="text-2xl font-bold text-indigo-900 md:text-3xl">
+            <h2 class="text-2xl font-bold text-[#1f2937] md:text-3xl">
               Wanna Create a Blog?
             </h2>
 
-            <p class="hidden text-indigo-900 sm:mt-4 sm:block">
+            <p class="hidden text-[#1f2937] sm:mt-4 sm:block">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere
               temporibus dicta mollitia!
             </p>
@@ -251,7 +256,7 @@ const Home = () => {
             <form action="#" class="sm:flex sm:gap-4">
               {currentUser ? (
                 <Link to={"/add-post"}>
-                  <button class="group mt-4 flex w-full items-center justify-center rounded-md bg-indigo-600 px-5 py-3 text-white transition focus:outline-none focus:ring focus:ring-indigo-400 sm:mt-0 sm:w-auto">
+                  <button class="group mt-4 flex w-full items-center justify-center rounded-md bg-blue-600 px-5 py-3 text-white transition focus:outline-none focus:ring focus:ring-indigo-400 sm:mt-0 sm:w-auto">
                     <span class="text-sm font-medium"> Add Post </span>
 
                     <svg
@@ -272,7 +277,7 @@ const Home = () => {
                 </Link>
               ) : (
                 <Link to={"/signup"}>
-                  <button class="group mt-4 flex w-full items-center justify-center rounded-md bg-indigo-600 px-5 py-3 text-white transition focus:outline-none focus:ring focus:ring-indigo-400 sm:mt-0 sm:w-auto">
+                  <button class="group mt-4 flex w-full items-center justify-center rounded-md bg-blue-600 px-5 py-3 text-white transition focus:outline-none focus:ring focus:ring-indigo-400 sm:mt-0 sm:w-auto">
                     <span class="text-sm font-medium"> Sign Up </span>
 
                     <svg
@@ -299,7 +304,9 @@ const Home = () => {
 
       {/* card */}
       <div className="container mx-auto px-4 py-8">
-        <h1 className="text-4xl font-bold mb-8">Popular Blog Posts</h1>
+        <h1 className="text-4xl font-bold mb-8 text-white">
+          Popular Blog Posts
+        </h1>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {/* Sample blog post cards */}
           {posts &&

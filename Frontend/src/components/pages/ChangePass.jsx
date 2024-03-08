@@ -27,7 +27,7 @@ const ChangePass = () => {
     <>
       <div className="flex items-center justify-center ">
         <form className="flex flex-col gap-4 sm:w-[30%] border p-6 m-10  ">
-          <h1 className="text-3xl font-bold text-center text-black mb-6">
+          <h1 className="text-3xl font-bold text-center text-white mb-6">
             Change Password
           </h1>
           {error && (
@@ -57,7 +57,7 @@ const ChangePass = () => {
             className=" rounded-lg p-3"
           />
           <button
-            className="bg-blue-600 p-3 rounded-lg hover:bg-blue-700"
+            className="bg-blue-600 p-3 rounded-lg hover:bg-blue-700 font-semibold text-white"
             onClick={handleChangePassword}
           >
             Update

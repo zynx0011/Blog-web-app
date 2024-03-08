@@ -87,7 +87,7 @@ const Header = () => {
   };
 
   return (
-    <header className="py-3  shadow bg-[#3f418d] border-b-4 border-white text-[#f9eded] ">
+    <header className="py-3  shadow bg-[#1f2937] border-b-4 border-white text-[#f9eded] ">
       <div className="sm:hidden relative">
         <MenuIcon
           className="ml-4 hover:scale-1 hover:bg-white hover:rounded-full hover:text-indigo-400 "
@@ -129,13 +129,15 @@ const Header = () => {
             </div>
           ) : (
             <div>
-              {navItem.map((option) => (
-                <MenuItem key={option} onClick={handleClose}>
-                  <button onClick={() => navigate(option.slug)}>
-                    {option.name}
-                  </button>
-                </MenuItem>
-              ))}
+              {navItem
+                .filter((option) => option.active)
+                .map((option) => (
+                  <MenuItem key={option} onClick={handleClose}>
+                    <button onClick={() => navigate(option.slug)}>
+                      {option.name}
+                    </button>
+                  </MenuItem>
+                ))}
             </div>
           )}
         </Menu>
@@ -165,15 +167,21 @@ const Header = () => {
                 <li key={item.name}>
                   <button
                     onClick={() => navigate(item.slug)}
-                    className="inline-bock   sm:px-6 sm:py-2 duration-200  hover:text-[#3f418d] hover:bg-[#f9eded] rounded-full"
+                    className="inline-bock   sm:px-6 sm:py-2 duration-200 
+                    group relative inline-flex items-center justify-start overflow-hidden rounded-full px-5 py-3 font-bold"
                   >
-                    {item.name}
+                    <span class="absolute left-0 top-0 h-32 w-32 -translate-y-2 translate-x-12 rotate-45 bg-black opacity-[3%]"></span>
+                    <span class="absolute left-0 top-0 -mt-1 h-48 w-48 -translate-x-56 -translate-y-24 rotate-45 bg-white opacity-100 transition-all duration-500 ease-in-out group-hover:-translate-x-8"></span>
+                    <span class="relative w-full text-left  transition-colors duration-200 ease-in-out group-hover:text-[#1f2937]">
+                      {item.name}
+                    </span>
+                    <span class="absolute inset-0 rounded-full hover:border-2 hover:border-white "></span>
                   </button>
                 </li>
               ) : null
             )}
             {authStatus && (
-              <li className="border  ">
+              <li className=" ">
                 <LogoutBtn />
               </li>
             )}

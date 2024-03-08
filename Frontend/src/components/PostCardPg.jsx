@@ -51,9 +51,9 @@ const PostCardPg = () => {
   };
 
   return post ? (
-    <div className="py-8">
+    <div className="py-8 text-white">
       <Container>
-        <div className="w-full flex justify-center mb-4 relative border rounded-xl p-2">
+        <div className="w-full flex justify-center mb-4 relative border rounded-xl p-2 ">
           <img
             src={post.featuredImage}
             alt={post.title}
@@ -106,8 +106,8 @@ const PostCardPg = () => {
     //   </Link>
     // );
     <>
-      <div className="flex flex-col space-y-3">
-        <Skeleton className="h-[125px] w-[250px] rounded-xl" />
+      <div className="flex flex-col space-y-3 items-center justify-center p-14">
+        <Skeleton className="h-[225px] w-[80%] rounded-xl" />
         <div className="space-y-2">
           <Skeleton className="h-4 w-[250px]" />
           <Skeleton className="h-4 w-[200px]" />

@@ -40,8 +40,8 @@ const SearchPage = () => {
   };
 
   return (
-    <div className="container mx-auto mt-8 flex items-start gap-8 min-h-screen">
-      <div className="flex gap-4 mr-4 items-center mb-4 flex-col p-3 border-r-2 min-h-screen">
+    <div className=" mx-auto mt-8 flex items-start flex-col sm:flex-row  gap-8 sm:min-h-screen">
+      <div className="flex gap-4 mr-4 items-center ml-5 sm:ml-0 mb-4 flex-col p-3 sm:border-r-2 sm:min-h-screen">
         <form onSubmit={handleSubmit} className="w-full">
           <input
             type="text"
@@ -57,10 +57,10 @@ const SearchPage = () => {
         </form>
       </div>
       <div className="flex-1">
-        <p className="text-xl font-bold mb-4">Search Results</p>
+        <p className="text-xl font-bold mb-4 text-white">Search Results</p>
 
         {/* Display search results here */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 text-white">
           {searchResults &&
             searchResults.map((item) => (
               <Link to={`/post/${item._id}`}>

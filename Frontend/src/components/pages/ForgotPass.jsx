@@ -35,7 +35,7 @@ const ForgotPass = () => {
   const [success, setSuccess] = React.useState(false);
   const [error, setError] = React.useState(false);
   return (
-    <div className="min-h-screen flex items-center justify-center  py-12 px-4 sm:px-6 lg:px-8">
+    <div className="sm:min-h-screen flex items-center justify-center  py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full space-y-8">
         <div>
           {error ? (
@@ -51,10 +51,10 @@ const ForgotPass = () => {
               Password reset email sent
             </p>
           )}
-          <h2 className="mt-6 text-center text-3xl font-extrabold">
-            Forgot Your <span className="text-indigo-600">Password?</span>
+          <h2 className="mt-6 text-center text-3xl font-extrabold text-white">
+            Forgot Your <span className="">Password?</span>
           </h2>
-          <p className="mt-2 text-center text-sm ">
+          <p className="mt-2 text-center text-sm text-white">
             Enter your email address and we'll send you a password reset link.
           </p>
         </div>

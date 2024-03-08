@@ -54,15 +54,18 @@ function Signup() {
 
   return (
     <div className="flex items-center justify-center   max-h-screen p-3 sm:p-[15%]">
-      <div className="div w-10 bg-gradient-to-r from-violet-600 to-indigo-600 h-[592px] sm:ml-[16%] flex items-center justify-center rounded-xl sm:w-[30%]">
-        <div className="text-3xl hidden sm:block text-center font-bold">
+      <div className="div w-10 bg-gradient-to-r from-slate-700 via-slate-800 to-slate-900 h-[592px]  border sm:ml-[16%] flex items-center justify-center rounded-xl sm:w-[30%]">
+        <div className="text-3xl hidden sm:block text-center text-white  font-bold">
           <h1>
-            Welcome To <span className="text-white">Express</span>
+            Welcome To{" "}
+            <span className="bg-gradient-to-r from-blue-600 via-green-500 to-indigo-400 inline-block text-transparent bg-clip-text text-4xl">
+              Express
+            </span>
           </h1>
         </div>
       </div>
       <div
-        className={`mx-auto h-[592px]  sm:w-full max-w-lg backdrop-blur-lg sm:mr-[12%] bg-white rounded-xl p-10 border border-black/20`}
+        className={`mx-auto h-[592px]  sm:w-full max-w-lg backdrop-blur-lg text-[#10172a] sm:mr-[12%] bg-white rounded-xl p-10 border border-black/20`}
       >
         <div className="mb-5 flex justify-center">
           <span className="inline-block w-full max-w-[100px]">
@@ -76,7 +79,7 @@ function Signup() {
           Already have an account?&nbsp;
           <Link
             to="/login"
-            className="font-medium text-primary transition-all text-indigo-500 duration-200 hover:underline"
+            className="font-medium  transition-all text-blue-500 duration-200 hover:underline"
           >
             Sign In
           </Link>
@@ -94,6 +97,7 @@ function Signup() {
               type="text"
               onChange={(e) => setUsername(e.target.value)}
               value={username}
+              className="outline-black/30"
             />
             <Input
               label="Email: "
@@ -101,6 +105,7 @@ function Signup() {
               type="email"
               onChange={(e) => setEmail(e.target.value)}
               value={email}
+              className="outline-black/30"
             />
             <Input
               label="Password: "
@@ -108,6 +113,7 @@ function Signup() {
               onChange={(e) => setPassword(e.target.value)}
               value={password}
               placeholder="Enter your password"
+              className="outline-black/30"
             />
             {/* <Input
               label="phone no"
@@ -124,10 +130,13 @@ function Signup() {
                 required: true,
               })}
             /> */}
-            <Button type="submit" className="w-full bg-indigo-500">
-              Create Account
-            </Button>
           </div>
+          <button
+            type="submit"
+            className=" w-full bg-blue-700 mt-14 hover:bg-blue-600  p-3 rounded-lg font-bold text-white"
+          >
+            Create Account
+          </button>
         </form>
       </div>
     </div>

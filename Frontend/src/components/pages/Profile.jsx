@@ -32,7 +32,7 @@ const Profile = () => {
     const userInfo = async () => {
       try {
         const res = await axios.get(`/api/v1/users/current-user/${params.id}`);
-        console.log(res.data);
+        // console.log(res.data);
         setUserInfo(res.data);
       } catch (error) {
         console.log(error);
@@ -57,52 +57,47 @@ const Profile = () => {
   };
 
   return (
-    <div className="min-h-screen  py-6 flex flex-col justify-center sm:py-12">
-      <div className="py-6">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white overflow-hidden shadow rounded-lg">
-            <div className="px-4 py-5 sm:px-6 bg-indigo-500">
-              <h3 className="text-lg font-medium leading-6 text-white">
-                Profile Information
-              </h3>
-            </div>
-            <div className="border-t border-gray-200">
-              <dl>
-                <div className="bg-indigo-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                  <dt className="text-sm font-semibold text-indigo-500 ">
-                    Username
-                  </dt>
-                  <dd className="mt-1 text-sm font-semibold text-gray-900 sm:col-span-2">
-                    {userInfo?.username}
-                  </dd>
+    <div className="">
+      <div className=" mx-auto ">
+        <div className=" overflow-hidden shadow ">
+          <div className="border-t border-gray-200">
+            <dl>
+              <div className="sm:flex items-center sm:gap-[12%] sm:p-9">
+                <div className="border-r-2 sm:min-h-screen sm:px-9 ">
+                  <h1 className="text-4xl font-bold text-white p-4 mr-5">
+                    Profile
+                  </h1>
+                  {/* <button className="text-indigo-600 hover:text-indigo-900">asdf</button> */}
                 </div>
-                <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                  <dt className="text-sm font-semibold text-indigo-500">
-                    Email
-                  </dt>
-                  <dd className="mt-1 text-sm text-gray-900 font-semibold sm:col-span-2">
-                    {userInfo?.email}
-                  </dd>
-                </div>
-                <div className="bg-indigo-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                  <dt className="text-sm font-semibold text-indigo-500">Bio</dt>
-                  <dd className="mt-1 text-sm font-semibold text-gray-900 sm:col-span-2">
-                    {bio}
-                  </dd>
-                </div>
-                <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                  <dt className="text-sm font-semibold text-indigo-500">
-                    Edit
-                  </dt>
-                  <dd className="mt-1 text-sm text-gray-900 sm:col-span-2">
-                    <button className="text-indigo-600 hover:text-indigo-900">
+                <div className="border-2 sm:p-7 sm:min-h-[70vh] flex items-center ">
+                  <div className="text-white text-xl p-4 flex gap-10  flex-col">
+                    <h1 className=" m-3 ">
+                      Username :{" "}
+                      <span className="font-bold ">{userInfo?.username}</span>
+                    </h1>
+                    <hr className="mb-3" />
+                    <h1 className=" m-3">
+                      {" "}
+                      Email :{" "}
+                      <span className="font-bold ">{userInfo?.email}</span>
+                    </h1>
+                    <hr />
+                    <h1 className=" m-3">
+                      {" "}
+                      Bio :<span className="font-bold ">{bio}</span>
+                    </h1>
+                    <hr />
+                    <button className="p-3 bg-blue-700 font-semibold text-white rounded-lg hover:bg-blue-600">
+                      {" "}
                       <Sheet>
                         <SheetTrigger asChild>
-                          <button variant="outline">Edit profile</button>
+                          <button variant="outline" className=" w-full">
+                            Edit profile
+                          </button>
                         </SheetTrigger>
-                        <SheetContent className="bg-black text-white">
+                        <SheetContent className="bg-[#10172a] text-white">
                           <SheetHeader>
-                            <SheetTitle className="font-bold text-white">
+                            <SheetTitle className="font-bold text-white text-xl ">
                               Edit profile
                             </SheetTitle>
                             <SheetDescription>
@@ -178,14 +173,37 @@ const Profile = () => {
                         </SheetContent>
                       </Sheet>
                     </button>
-                  </dd>
+                  </div>
                 </div>
-              </dl>
-            </div>
+              </div>
+            </dl>
           </div>
         </div>
       </div>
     </div>
+
+    //     <div className="flex items-center gap-[12%] p-9">
+    //       <div className="border-r-2 min-h-screen px-9 ">
+    //         <h1 className="text-4xl font-bold text-white p-4 mr-5">Profile</h1>
+    //         {/* <button className="text-indigo-600 hover:text-indigo-900">asdf</button> */}
+    //       </div>
+    //       <div className="border-2 p-5 min-h-[70vh] flex items-center ">
+    //         <div className="text-white text-xl p-4 flex gap-10 flex-col">
+    //           <h1 className="border-b-2 m-3 ">
+    //             Username : <span className="font-bold ">{userInfo?.username}</span>
+    //           </h1>
+    //           <h1 className="border-b-2 m-3">
+    //             {" "}
+    //             Email : <span className="font-bold ">{userInfo?.email}</span>
+    //           </h1>
+    //           <h1 className="border-b-2 m-3">
+    //             {" "}
+    //             Bio :<span className="font-bold ">{bio}</span>
+    //           </h1>
+    //           <h1 className="border-b-2 m-3">Edit profile :</h1>
+    //         </div>
+    //       </div>
+    //     </div>
   );
 };
 
