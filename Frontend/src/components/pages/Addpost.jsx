@@ -76,7 +76,7 @@ function AddPost() {
         userRef: currentUser?._id || data?._id || data2?._id,
       });
       setError(false);
-      console.log(res);
+      // console.log(res);
       navigate("/");
     } catch (error) {
       setError(true, "error");
@@ -179,18 +179,18 @@ function AddPost() {
 
     <div className="py-8 text-white">
       <Container>
-        <h1 className="text-4xl font-bold text-center mb-16 text-white">
+        <h1 className="text-4xl font-bold text-center mb-12 text-white">
           Post Your Blog
         </h1>
         <form
           onSubmit={handleSubmit}
-          className="flex flex-wrap flex-col sm:flex-row"
+          className="flex flex-wrap flex-col sm:flex-row "
         >
-          <div className="sm:w-2/3 px-2 ">
+          <div className="sm:w-2/3 px-2  ">
             <Input
               label="Title :"
               placeholder="Title "
-              className="mb-4"
+              className="mb-4 font-semibold "
               type="text"
               id="title"
               onChange={(e) => {
@@ -201,7 +201,7 @@ function AddPost() {
             <Input
               label="Description :"
               placeholder="Description"
-              className="mb-4 "
+              className="mb-4 font-semibold "
               type="text"
               id="description"
               onChange={(e) => {
@@ -214,7 +214,7 @@ function AddPost() {
               label="Content :"
               name="content"
               placeholder="Content"
-              className="mb-4 w-full p-3 text-black"
+              className="mb-4 w-full p-3 text-black rounded-lg font-semibold"
               rows={10}
               value={formdata.content}
               onChange={(e) => {
@@ -226,9 +226,7 @@ function AddPost() {
           <div className="sm:w-1/3 px-2">
             {imageSuccess ? (
               <p className="text-green-700">Image uploaded successfully</p>
-            ) : (
-              <p className="text-blue-700">Image is uploading please wait </p>
-            )}
+            ) : null}
             <Input
               label="Featured Image :"
               type="file"
@@ -237,33 +235,7 @@ function AddPost() {
               accept="image/png, image/jpg, image/jpeg, image/gif"
               onChange={(e) => setImage(e.target.files[0])}
             />
-            {/* {post && (
-            <div className="w-full mb-4">
-              <img
-                src={appwriteService.getFilePreview(post.featuredImage)}
-                alt={post.title}
-                className="rounded-lg"
-              />
-            </div>
-          )} */}
-            {/* {formdata?.featuredImage?.length > 0 && (
-              // {/* // formdata?.featuredImage.map((url, index) => ( */}
-            {/* <div className="flex justify-between p-3 border items-center">
-                <img
-                  src={formdata.featuredImage}
-                  alt="listing image"
-                  className="w-20 h-20 object-contain rounded-lg"
-                />
-                <button
-                  type="button"
-                  onClick={handleRemoveImage}
-                  className="p-3 text-red-700 rounded-lg uppercase hover:opacity-75"
-                >
-                  Delete
-                </button>
-              </div> */}
-            {/* )} */}
-            {/* ))} */}
+
             <Select
               options={["active", "inactive"]}
               label="Status"
@@ -277,7 +249,8 @@ function AddPost() {
             <Button
               type="submit"
               // bgColor={post ? "bg-green-500" : undefined}
-              className="w-full"
+              // disabled={!imageSuccess}
+              className="w-full hover:bg-blue-700 disabled:bg-gray-500"
             >
               {/* {post ? "Update" : "Submit"} */}
               Add Post
@@ -287,10 +260,10 @@ function AddPost() {
             <Alert
               variant="filled"
               severity="error"
-              className="absolute right-3 top-[16%] "
-              sx={{ width: "20%" }}
+              className="absolute right-5 top-[16%] "
+              sx={{ width: "25%" }}
             >
-              This is a filled error Alert.
+              Please check your credentials or wait image is uploading...
             </Alert>
           ) : null}
         </form>

@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
 const NewPasswordPage = () => {
@@ -7,13 +7,13 @@ const NewPasswordPage = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
-  const [timer, setTimer] = useState(5);
+  const [timer, setTimer] = useState();
   const parmas = useParams();
-  const { userId, token } = useParams();
+  const { userId } = useParams();
   const navigate = useNavigate();
 
-  console.log(userId, token);
-  console.log(parmas);
+  // console.log(userId, token);
+  // console.log(parmas);
 
   const handleNewPasswordChange = (e) => {
     setNewPassword(e.target.value);
@@ -22,13 +22,6 @@ const NewPasswordPage = () => {
   const handleConfirmPasswordChange = (e) => {
     setConfirmPassword(e.target.value);
   };
-
-  // for (let i = 5; i > 0; i--) {
-  //   setTimer(i);
-  //   setTimeout(() => {
-  //     setTimer(i - 1);
-  //   }, 1000);
-  // }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -42,9 +35,10 @@ const NewPasswordPage = () => {
       });
 
       setSuccess(true);
-      // setTimeout(() => {
-      //   navigate("/api/v1/users/SignIn");
-      // }, 5000);
+
+      setTimeout(() => {
+        navigate("/Login");
+      }, 3000);
     } catch (error) {
       console.log(error);
       setError(true, "An error occurred while checking passwords", error);
@@ -58,7 +52,8 @@ const NewPasswordPage = () => {
           {success && (
             <>
               <p className="text-center text-sm text-green-600">
-                Password updated successfully
+                Password updated successfully ! please wait Redirecting to login
+                page
               </p>
             </>
           )}
