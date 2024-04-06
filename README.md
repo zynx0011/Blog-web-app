@@ -1,4 +1,6 @@
 Web Blog Application
+
+
 Objective: Implement backend services for property data management and user interactions using the MERN stack.
 
 Outcome
